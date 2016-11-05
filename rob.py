@@ -114,7 +114,7 @@ def turn_around():
 
 
 def enemy_spotted():
-    ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE:
+    ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE
 
 
 def attack():
