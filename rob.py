@@ -22,6 +22,9 @@ print("motor right connected: %s" % str(right_motor.connected))
 left_motor = ev3.LargeMotor('outB')
 print("motor left connected: %s" % str(right_motor.connected))
 
+small_motor = ev3.MediumMotor('outC')
+print("small motor connected: %s" % str(small_motor.connected))
+
 motors = [left_motor, right_motor]
 for m in motors
     m.reset()
@@ -102,7 +105,7 @@ def over_border():
     return color_sensor.value() > DEFAULT_COLOR_THRESHOLD
 
 
-def turn_around:
+def turn_around():
     if DEBUG:
         print('Oiii border...')
     sound.beep()
@@ -112,22 +115,26 @@ def turn_around:
     time.sleep(0.5)
 
 
-def enemy_spotted:
+def enemy_spotted():
     ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE:
 
 
-def attack:
+def attack():
     if DEBUG:
         print('Attack!')
     #sound.speak('Attack!')
     forward()
 
 
-def search(left)
+def search(left):
     if DEBUG:
         print('Searching opponent')
     # sound.speak('Where are you?')
     rotate(left)
+
+
+def distract():
+    #small_motor.
 
 
 ##
@@ -148,6 +155,7 @@ def run_loop():
         # Stop if there is a white border infront
         if over_border():
             turn_around()
+            distract()
         else:
             # Move forward if there is something infront, otherwise rotate
             if enemy_spotted():
