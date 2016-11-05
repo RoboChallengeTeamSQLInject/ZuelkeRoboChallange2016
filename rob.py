@@ -6,9 +6,9 @@ import ev3dev.ev3 as ev3
 
 DEBUG = False
 DEFAULT_SLEEP_TIMEOUT_IN_SEC = 0.1
-DEFAULT_SPEED = 200
+DEFAULT_SPEED = 500
 DEFAULT_DUTY_CYCLE = -100
-DEFAULT_THRESHOLD_DISTANCE = 300
+DEFAULT_THRESHOLD_DISTANCE = 350
 DEFAULT_COLOR_THRESHOLD = 20
 DEFAULT_SM_RANGE = 75
 ##
@@ -24,6 +24,7 @@ print("motor left connected: %s" % str(left_motor.connected))
 small_motor = ev3.MediumMotor('outC')
 print("small motor connected: %s" % str(small_motor.connected))
 small_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
+small_motor.speed_sp = DEFAULT_SPEED
 
 motors = [left_motor, right_motor]
 for m in motors:
@@ -85,15 +86,15 @@ def teardown():
         m.reset()
 
 
-def rotate(left):
+def rotate(left, factor):
     brake()
 
     if left:
-        left_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * 0.75
-        right_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * 0.75
+        left_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * factor
+        right_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * factor
     else:
-        left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * 0.75
-        right_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * 0.75
+        left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * factor
+        right_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * factor
 
     for m in motors:
         m.run_forever()
@@ -128,7 +129,7 @@ def search(left):
     if DEBUG:
         print('Searching opponent')
     # sound.speak('Where are you?')
-    rotate(left)
+    rotate(left, 0.7)
 
 
 def distract():
@@ -147,7 +148,8 @@ def distract():
 
 def run_loop():
     left = True
-
+    rotate(left, 1)
+    time.sleep(0.8)
     while True:
         # time.sleep(DEFAULT_SLEEP_TIMEOUT_IN_SEC)
         if DEBUG:
