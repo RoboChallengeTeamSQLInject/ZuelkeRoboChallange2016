@@ -10,7 +10,7 @@ DEBUG = False
 DEFAULT_SLEEP_TIMEOUT_IN_SEC = 0.1
 
 # default speed
-DEFAULT_SPEED = 600
+DEFAULT_SPEED = 200
 DEFAULT_DUTY_CYCLE = -100
 
 # default threshold distance
@@ -24,12 +24,10 @@ if DEBUG:
 
 # motors
 right_motor = ev3.LargeMotor('outA')
-if DEBUG:
-    print("motor right connected: %s" % str(right_motor.connected))
+print("motor right connected: %s" % str(right_motor.connected))
 
 left_motor = ev3.LargeMotor('outB')
-if DEBUG:
-    print("motor left connected: %s" % str(right_motor.connected))
+print("motor left connected: %s" % str(right_motor.connected))
 
 motors = [left_motor, right_motor]
 right_motor.reset()
@@ -39,13 +37,11 @@ left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
 
 # sensors
 color_sensor = ev3.ColorSensor()
-if DEBUG:
-    print("color sensor connected: %s" % str(color_sensor.connected))
+print("color sensor connected: %s" % str(color_sensor.connected))
 color_sensor.mode = 'COL-REFLECT'
 
 ultrasonic_sensor = ev3.UltrasonicSensor()
-if DEBUG:
-    print("ultrasonic sensor connected: %s" % str(ultrasonic_sensor.connected))
+print("ultrasonic sensor connected: %s" % str(ultrasonic_sensor.connected))
 ultrasonic_sensor.mode = 'US-DIST-CM'
 
 # buttons
@@ -126,7 +122,7 @@ def run_loop():
             if DEBUG:
                 print('Oiii border...')
             sound.beep()
-            set_speed(DEFAULT_SPEED / 2, DEFAULT_DUTY_CYCLE / 2)
+            set_speed(DEFAULT_SPEED, DEFAULT_DUTY_CYCLE)
             brake()
 
             backward()
