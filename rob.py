@@ -61,6 +61,7 @@ sound = ev3.Sound()
 # Start Button
 button = ev3.Button()
 
+
 ##
 #  Robot functionality
 ##
@@ -89,27 +90,6 @@ def brake():
         m.stop()
 
 
-def turn():
-    left_motor.stop()
-    pos = right_motor.position
-
-    # new absolute position
-    abs_pos = pos + 500
-
-    right_motor.position_sp = abs_pos
-    right_motor.run_to_abs_pos()
-
-    while abs(right_motor.position - abs_pos) > 10:
-        # turn to new position
-
-        # stop when object detected
-        if ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE:
-            break
-
-    set_speed(DEFAULT_SPEED, DEFAULT_DUTY_CYCLE)
-    forward()
-
-
 def teardown():
     print('Tearing down...')
     for m in motors:
@@ -120,11 +100,11 @@ def teardown():
 def rotate(left):
     brake()
     if left:
-        left_motor.duty_cycle_sp = - (DEFAULT_DUTY_CYCLE / 2)
-        right_motor.duty_cycle_sp = (DEFAULT_DUTY_CYCLE / 2)
+        left_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE
+        right_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
     else:
-        left_motor.duty_cycle_sp = (DEFAULT_DUTY_CYCLE / 2)
-        right_motor.duty_cycle_sp = - (DEFAULT_DUTY_CYCLE / 2)
+        left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
+        right_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE
     for m in motors:
         m.run_forever()
 
@@ -190,7 +170,6 @@ def main():
             break
 
     set_speed(DEFAULT_SPEED, DEFAULT_DUTY_CYCLE)
-
 
     try:
         run_loop()
