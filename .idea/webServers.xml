@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="6418b2be-9d7e-4ab3-9e1a-795282cd3c3c" name="Ev3" url="http://192.168.137.3">
-        <fileTransfer host="192.168.137.3" port="22" rootFolder="/home/robot" accessType="SFTP" username="robot">
+        <fileTransfer host="192.168.137.3" port="22" rootFolder="/home/robot" accessType="SFTP" password="dfd8dfc5dfc9dfc1dfcfdfdedfd8dfc5dfc9dfc1dfcfdfdedfd8dfc5dfc9dfc1dfcfdfde" username="robot">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

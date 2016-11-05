@@ -7,10 +7,10 @@ import random
 
 DEBUG = False
 DEFAULT_SLEEP_TIMEOUT_IN_SEC = 0.1
-DEFAULT_SPEED = 500
+DEFAULT_SPEED = 1000
 DEFAULT_DUTY_CYCLE = -100
 DEFAULT_THRESHOLD_DISTANCE = 350
-DEFAULT_COLOR_THRESHOLD = 20
+DEFAULT_COLOR_THRESHOLD = 35
 DEFAULT_SM_RANGE = 75
 ##
 # Setup
@@ -122,12 +122,6 @@ def attack():
     if DEBUG:
         print('Attack!')
     # sound.speak('Attack!')
-    if random.randint(0,100) <= 2:
-        print('Random event!')
-        brake()
-        backward()
-        time.sleep(0.2)
-        brake()
     forward()
 
 
@@ -153,7 +147,7 @@ def distract():
 # Main loop
 
 def run_loop():
-    left = True
+    left = False
     turn_speed = 1
     rotate(left, turn_speed)
     time.sleep(0.8)
@@ -162,9 +156,9 @@ def run_loop():
         if DEBUG:
             print('----------------------------')
             print('color value: %s' % str(color_sensor.value()))
-            print('ultrasonic value: %s' % str(ultrasonic_sensor.value()))
-            print('motor positions (r, l): %s, %s' % (str(right_motor.position), str(left_motor.position)))
-            print('touch sensors: %s, %s' % (str(left_button.value()), str(right_button.value())))
+            # print('ultrasonic value: %s' % str(ultrasonic_sensor.value()))
+            # print('motor positions (r, l): %s, %s' % (str(right_motor.position), str(left_motor.position)))
+            # print('touch sensors: %s, %s' % (str(left_button.value()), str(right_button.value())))
 
         # Stop if there is a white border infront
         if over_border():
@@ -176,7 +170,7 @@ def run_loop():
                 attack()
             else:
                 search(left, turn_speed)
-                distract()
+                #distract()
 
             # opponent on left side, rotate left
             if left_button.value():
@@ -189,7 +183,7 @@ def run_loop():
                 turn_speed = 1
 
             else:
-                turn_speed = 0.7
+                turn_speed = 0.75
 
 
 def main():

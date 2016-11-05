@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f119c7-35c4-4d04-a369-6a505e94e66c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rob.py" afterPath="$PROJECT_DIR$/rob.py" />
     </list>
@@ -18,7 +19,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/RoboChallange$Remote.coverage" NAME="Remote Coverage Results" MODIFIED="1478344454864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RoboChallange$Remote.coverage" NAME="Remote Coverage Results" MODIFIED="1478349362571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RoboChallange$Script.coverage" NAME="Script Coverage Results" MODIFIED="1478314017385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RoboChallange$Unnamed.coverage" NAME="Remote Coverage Results" MODIFIED="1478298979202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -34,8 +35,8 @@
       <file leaf-file-name="rob.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rob.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1250">
-              <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+            <state relative-caret-position="975">
+              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
                 <element signature="e#50#61#0" expanded="true" />
               </folding>
@@ -57,6 +58,9 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -913,7 +917,7 @@
       <updated>1478282640566</updated>
       <workItem from="1478282649507" duration="3619000" />
       <workItem from="1478287547599" duration="14060000" />
-      <workItem from="1478307699939" duration="15846000" />
+      <workItem from="1478307699939" duration="19713000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1478307816609</created>
@@ -943,11 +947,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478342864356</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated random events during attack mode">
+      <created>1478345316982</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1478345316982</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33525000" />
+    <option name="totallyTimeSpent" value="37392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="5182" height="2122" extended-state="6" />
@@ -1025,7 +1036,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="Versrion 1.0" />
     <MESSAGE value="updated initial rotation" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated initial rotation" />
+    <MESSAGE value="updated random events during attack mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated random events during attack mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1098,8 +1110,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rob.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1250">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+        <state relative-caret-position="975">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
           <folding>
             <element signature="e#50#61#0" expanded="true" />
           </folding>
