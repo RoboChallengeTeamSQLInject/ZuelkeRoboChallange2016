@@ -7,11 +7,10 @@ import ev3dev.ev3 as ev3
 DEBUG = False
 DEFAULT_SLEEP_TIMEOUT_IN_SEC = 0.1
 DEFAULT_SPEED = 200
-DEFAULT_DUTY_CYCLE = -75
+DEFAULT_DUTY_CYCLE = -100
 DEFAULT_THRESHOLD_DISTANCE = 300
 DEFAULT_COLOR_THRESHOLD = 20
-
-
+DEFAULT_SM_RANGE = 75
 ##
 # Setup
 
@@ -24,6 +23,7 @@ print("motor left connected: %s" % str(left_motor.connected))
 
 small_motor = ev3.MediumMotor('outC')
 print("small motor connected: %s" % str(small_motor.connected))
+small_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
 
 motors = [left_motor, right_motor]
 for m in motors:
@@ -89,18 +89,18 @@ def rotate(left):
     brake()
 
     if left:
-        left_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE
-        right_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
+        left_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * 0.75
+        right_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * 0.75
     else:
-        left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
-        right_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE
+        left_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE * 0.75
+        right_motor.duty_cycle_sp = - DEFAULT_DUTY_CYCLE * 0.75
 
     for m in motors:
         m.run_forever()
 
 
 def over_border():
-    return color_sensor.value() > DEFAULT_COLOR_THRESHOLD
+    return (color_sensor.value() > DEFAULT_COLOR_THRESHOLD)
 
 
 def turn_around():
@@ -114,13 +114,13 @@ def turn_around():
 
 
 def enemy_spotted():
-    ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE
+    return (ultrasonic_sensor.value() < DEFAULT_THRESHOLD_DISTANCE)
 
 
 def attack():
     if DEBUG:
         print('Attack!')
-    #sound.speak('Attack!')
+    # sound.speak('Attack!')
     forward()
 
 
@@ -132,9 +132,14 @@ def search(left):
 
 
 def distract():
-    #small_motor.
+    # small_motor.
     if DEBUG:
         print('distract')
+    if small_motor.position < -DEFAULT_SM_RANGE:
+        small_motor.duty_cycle_sp = DEFAULT_DUTY_CYCLE
+    elif small_motor.position > DEFAULT_SM_RANGE:
+        small_motor.duty_cycle_sp = -DEFAULT_DUTY_CYCLE
+    small_motor.run_to_abs_pos()
 
 
 ##
@@ -155,13 +160,14 @@ def run_loop():
         # Stop if there is a white border infront
         if over_border():
             turn_around()
-            distract()
+
         else:
             # Move forward if there is something infront, otherwise rotate
             if enemy_spotted():
                 attack()
             else:
                 search(left)
+                distract()
 
             # opponent on left side, rotate left
             if left_button.value():
@@ -173,9 +179,8 @@ def run_loop():
 
 
 def main():
-
     print('I am ready. Please start me!')
-    sound.speak('I am ready. Please press any key!')
+    sound.speak('I am ready. Please press any button!')
 
     # Wait for any key
     while True:
