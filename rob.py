@@ -20,13 +20,13 @@ right_motor = ev3.LargeMotor('outA')
 print("motor right connected: %s" % str(right_motor.connected))
 
 left_motor = ev3.LargeMotor('outB')
-print("motor left connected: %s" % str(right_motor.connected))
+print("motor left connected: %s" % str(left_motor.connected))
 
 small_motor = ev3.MediumMotor('outC')
 print("small motor connected: %s" % str(small_motor.connected))
 
 motors = [left_motor, right_motor]
-for m in motors
+for m in motors:
     m.reset()
     m.duty_cycle_sp = DEFAULT_DUTY_CYCLE
 
@@ -47,11 +47,9 @@ left_button = ev3.TouchSensor('in4')
 print("button left connected: %s" % str(right_button.connected))
 
 button = ev3.Button()
-print("buttons connected: %s" % str(button.connected))
 
 # Sound
 sound = ev3.Sound()
-print("sound connected: %s" % str(sound.connected))
 
 
 ##
@@ -135,6 +133,8 @@ def search(left):
 
 def distract():
     #small_motor.
+    if DEBUG:
+        print('distract')
 
 
 ##
