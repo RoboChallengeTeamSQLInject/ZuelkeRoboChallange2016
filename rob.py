@@ -3,6 +3,7 @@
 
 import time
 import ev3dev.ev3 as ev3
+import random
 
 DEBUG = False
 DEFAULT_SLEEP_TIMEOUT_IN_SEC = 0.1
@@ -51,7 +52,6 @@ button = ev3.Button()
 
 # Sound
 sound = ev3.Sound()
-
 
 ##
 #  Robot functionality
@@ -122,14 +122,20 @@ def attack():
     if DEBUG:
         print('Attack!')
     # sound.speak('Attack!')
+    if random.randint(0,100) <= 2:
+        print('Random event!')
+        brake()
+        backward()
+        time.sleep(0.2)
+        brake()
     forward()
 
 
-def search(left):
+def search(left, turn_speed):
     if DEBUG:
         print('Searching opponent')
     # sound.speak('Where are you?')
-    rotate(left, 0.7)
+    rotate(left, turn_speed)
 
 
 def distract():
@@ -148,7 +154,8 @@ def distract():
 
 def run_loop():
     left = True
-    rotate(left, 1)
+    turn_speed = 1
+    rotate(left, turn_speed)
     time.sleep(0.8)
     while True:
         # time.sleep(DEFAULT_SLEEP_TIMEOUT_IN_SEC)
@@ -168,16 +175,21 @@ def run_loop():
             if enemy_spotted():
                 attack()
             else:
-                search(left)
+                search(left, turn_speed)
                 distract()
 
             # opponent on left side, rotate left
             if left_button.value():
                 left = True
+                turn_speed = 1
 
             # opponent on right side, rotate right
-            if right_button.value():
+            elif right_button.value():
                 left = False
+                turn_speed = 1
+
+            else:
+                turn_speed = 0.7
 
 
 def main():
